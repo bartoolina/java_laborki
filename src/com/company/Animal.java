@@ -54,4 +54,8 @@ public class Animal {
             System.out.println(name + " can't walk. He is dead.");
         }
     }
+
+    public String toString() {
+        return name;
+    }
 }

@@ -1,5 +1,8 @@
 package com.company;
 
+import com.company.devices.Car;
+import com.company.devices.Phone;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -9,6 +12,7 @@ public class Main {
         dog.name = "Burek";
 
         Car audi = new Car("Audi", "A3", 2006);
+        Phone samsung = new Phone("Samsung", "S7");
 
         me.setSalary(1000.0);
         System.out.println(me.getSalary());
@@ -21,6 +25,10 @@ public class Main {
 
         audi.value = 100000.0;
         me.setCar(audi);
+        System.out.println(me);
+        System.out.println(dog);
+        System.out.println(samsung);
+
 
     }
 }

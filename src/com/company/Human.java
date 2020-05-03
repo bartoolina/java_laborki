@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.devices.Car;
+import com.company.devices.Phone;
 import javafx.util.Pair;
 
 import java.time.LocalDate;
@@ -13,6 +15,7 @@ public class Human {
     private ArrayList<Pair<LocalDate, Double>> salaryHistory = new ArrayList<>();
     Animal pet;
     private Car car;
+    Phone phone;
 
     public Human(String firstName, String lastName) {
         this.firstName = firstName;
@@ -55,5 +58,9 @@ public class Human {
         } else {
             System.out.println(this.firstName + " " + this.lastName + " doesn't have enough money.");
         }
+    }
+
+    public String toString() {
+        return firstName + " " + lastName;
     }
 }
