@@ -4,6 +4,7 @@ public class Car {
     final String model;
     final String producer;
     final int yearOfProduction;
+    Double value;
 
     public Car(String producer, String model, int yearOfProduction) {
         this.model = model;

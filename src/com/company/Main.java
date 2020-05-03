@@ -9,12 +9,18 @@ public class Main {
         dog.name = "Burek";
 
         Car audi = new Car("Audi", "A3", 2006);
-        me.car = audi;
 
+        me.setSalary(1000.0);
         System.out.println(me.getSalary());
-        me.setSalary(2000.0);
-        me.setSalary(2500.0);
-        me.setSalary(-1.0);
-        System.out.println(me.getSalary());
+
+        audi.value = 1000.0;
+        me.setCar(audi);
+
+        audi.value = 10000.0;
+        me.setCar(audi);
+
+        audi.value = 100000.0;
+        me.setCar(audi);
+
     }
 }

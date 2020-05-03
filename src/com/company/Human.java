@@ -10,9 +10,9 @@ public class Human {
     String lastName;
     public static final Double DEFAULT_SALARY = 0.0;
     private Double salary = DEFAULT_SALARY;
-    Animal pet;
-    Car car;
     private ArrayList<Pair<LocalDate, Double>> salaryHistory = new ArrayList<>();
+    Animal pet;
+    private Car car;
 
     public Human(String firstName, String lastName) {
         this.firstName = firstName;
@@ -29,7 +29,7 @@ public class Human {
     public void setSalary(Double salary) {
         if (salary > 0.0) {
             LocalDate now = LocalDate.now();
-            salaryHistory.add(new Pair<LocalDate, Double>(now, salary));
+            salaryHistory.add(new Pair<>(now, salary));
 
             System.out.println("New value of salary has been added to salary history.");
             System.out.println("Please pick up the annex to the contract form Mrs Hania.");
@@ -41,4 +41,19 @@ public class Human {
         }
     }
 
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        if (car.value <= salary) {
+            System.out.println(this.firstName + " " + this.lastName + " bought " + car.model + " for cash.");
+            this.car = car;
+        } else if (car.value <= salary * 12) {
+            System.out.println(this.firstName + " " + this.lastName + " bought " + car.model + " on credit.");
+            this.car = car;
+        } else {
+            System.out.println(this.firstName + " " + this.lastName + " doesn't have enough money.");
+        }
+    }
 }
