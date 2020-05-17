@@ -1,15 +1,13 @@
 package com.company.devices;
 
-public class Phone {
-    final String producer;
-    final String model;
+public class Phone extends Device {
 
-    public Phone(String producer, String model) {
-        this.producer = producer;
-        this.model = model;
+    public Phone(String producer, String model, int yearOfProduction) {
+        super(producer, model, yearOfProduction);
     }
 
-    public String toString() {
-        return producer + " " + model;
+    @Override
+    public void turnOn() {
+        System.out.println("The phone is on now.");
     }
 }

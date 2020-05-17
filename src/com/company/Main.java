@@ -12,7 +12,7 @@ public class Main {
         dog.name = "Burek";
 
         Car audi = new Car("Audi", "A3", 2006);
-        Phone samsung = new Phone("Samsung", "S7");
+        Phone samsung = new Phone("Samsung", "S7", 2019);
 
         me.setSalary(1000.0);
         System.out.println(me.getSalary());
@@ -28,6 +28,10 @@ public class Main {
         System.out.println(me);
         System.out.println(dog);
         System.out.println(samsung);
+        System.out.println(audi);
+
+        audi.turnOn();
+        samsung.turnOn();
 
 
     }
