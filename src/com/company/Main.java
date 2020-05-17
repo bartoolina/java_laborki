@@ -17,14 +17,15 @@ public class Main {
         me.setSalary(1000.0);
         System.out.println(me.getSalary());
 
+        me.cash = 1000.0;
         audi.value = 1000.0;
-        me.setCar(audi);
+        me.setCar(audi, 1000.0);
 
         audi.value = 10000.0;
-        me.setCar(audi);
+        me.setCar(audi, 10000.0);
 
         audi.value = 100000.0;
-        me.setCar(audi);
+        me.setCar(audi, 100000.0);
         System.out.println(me);
         System.out.println(dog);
         System.out.println(samsung);
@@ -32,6 +33,15 @@ public class Main {
 
         audi.turnOn();
         samsung.turnOn();
+
+        Human janusz = new Human("Janusz", "Kowalski");
+        janusz.cash = 2000.0;
+        audi.sell(me, janusz, 1000.0);
+        me.cash = 1000.0;
+        audi.sell(janusz, me, 1500.0);
+        audi.sell(me, janusz, 20000.0);
+
+        samsung.sell(me, janusz, 100.0);
 
 
     }

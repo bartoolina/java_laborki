@@ -13,9 +13,10 @@ public class Human {
     public static final Double DEFAULT_SALARY = 0.0;
     private Double salary = DEFAULT_SALARY;
     private ArrayList<Pair<LocalDate, Double>> salaryHistory = new ArrayList<>();
-    Animal pet;
+    public Animal pet;
     private Car car;
-    Phone phone;
+    public Phone phone;
+    public Double cash;
 
     public Human(String firstName, String lastName) {
         this.firstName = firstName;
@@ -48,16 +49,27 @@ public class Human {
         return car;
     }
 
-    public void setCar(Car car) {
-        if (car.value <= salary) {
+    public boolean setCar(Car car, Double price) {
+        boolean bought = false;
+        if (price == 0.0) {
+            this.car = car;
+            return true;
+        }
+
+        if (price <= cash) {
             System.out.println(this.firstName + " " + this.lastName + " bought " + car.model + " for cash.");
             this.car = car;
-        } else if (car.value <= salary * 12) {
+            this.cash -= price;
+            bought = true;
+        } else if (price <= salary * 12) {
             System.out.println(this.firstName + " " + this.lastName + " bought " + car.model + " on credit.");
             this.car = car;
+            bought = true;
         } else {
             System.out.println(this.firstName + " " + this.lastName + " doesn't have enough money.");
         }
+
+        return bought;
     }
 
     public String toString() {

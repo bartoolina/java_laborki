@@ -1,6 +1,6 @@
 package com.company;
 
-public class Animal {
+public class Animal implements salleable {
     public static final Double DEFAULT_DOG_WEIGHT = 10.0;
     public static final Double DEFAULT_MOUSE_WEIGHT = 1.0;
     public static final Double DEFAULT_LION_WEIGHT = 30.0;
@@ -57,5 +57,22 @@ public class Animal {
 
     public String toString() {
         return name;
+    }
+
+    @Override
+    public void sell(Human seller, Human buyer, Double price) {
+        if (seller.pet.equals(this)) {
+            if (buyer.cash >= price) {
+                System.out.println(buyer + "bought a " + this.species + " from " + seller);
+                buyer.pet = this;
+                buyer.cash -= price;
+                seller.pet = null;
+                seller.cash += price;
+            } else {
+                System.out.println(buyer + " doesn't have enough money.");
+            }
+        } else {
+            System.out.println(seller + " can't sell not his animal.");
+        }
     }
 }
