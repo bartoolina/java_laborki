@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.creatures.FarmAnimal;
+import com.company.creatures.Pet;
 import com.company.devices.Car;
 import com.company.devices.Phone;
 
@@ -8,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         Human me = new Human("Marcin", "Nowak");
 
-        Animal dog = new Animal("dog");
+        Pet dog = new Pet("dog");
         dog.name = "Burek";
 
         Car audi = new Car("Audi", "A3", 2006);
@@ -43,6 +45,12 @@ public class Main {
 
         samsung.sell(me, janusz, 100.0);
 
+        FarmAnimal cow = new FarmAnimal("cow");
+        cow.name = "Mućka";
+        cow.feed(10.0);
+        cow.beEaten();
+
+        dog.feed(5.0);
 
     }
 }

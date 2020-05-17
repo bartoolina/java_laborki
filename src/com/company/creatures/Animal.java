@@ -1,12 +1,15 @@
-package com.company;
+package com.company.creatures;
 
-public class Animal implements salleable {
+import com.company.Human;
+import com.company.salleable;
+
+public abstract class Animal implements salleable, Feedable {
     public static final Double DEFAULT_DOG_WEIGHT = 10.0;
     public static final Double DEFAULT_MOUSE_WEIGHT = 1.0;
-    public static final Double DEFAULT_LION_WEIGHT = 30.0;
+    public static final Double DEFAULT_COW_WEIGHT = 100.0;
     final String species;
     public String name;
-    private Double weight;
+    protected Double weight;
 
     public Animal(String species) {
         String spc;
@@ -19,8 +22,8 @@ public class Animal implements salleable {
                 this.weight = DEFAULT_MOUSE_WEIGHT;
                 spc = species;
                 break;
-            case "lion":
-                this.weight = DEFAULT_LION_WEIGHT;
+            case "cow":
+                this.weight = DEFAULT_COW_WEIGHT;
                 spc = species;
                 break;
             default:
@@ -30,9 +33,20 @@ public class Animal implements salleable {
         this.species = spc;
     }
 
-    void feed() {
+    @Override
+    public void feed() {
         if (weight > 0) {
             weight++;
+            System.out.println(name + " is eating. His weight is now " + weight);
+        } else {
+            System.out.println(name + " can't eat. He is dead.");
+        }
+    }
+
+    @Override
+    public void feed(Double foodWeight) {
+        if (weight > 0) {
+            weight += foodWeight;
             System.out.println(name + " is eating. His weight is now " + weight);
         } else {
             System.out.println(name + " can't eat. He is dead.");
