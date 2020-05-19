@@ -3,17 +3,21 @@ package com.company;
 import com.company.creatures.FarmAnimal;
 import com.company.creatures.Pet;
 import com.company.devices.Car;
+import com.company.devices.Disel;
 import com.company.devices.Phone;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MalformedURLException {
         Human me = new Human("Marcin", "Nowak");
 
         Pet dog = new Pet("dog");
         dog.name = "Burek";
 
-        Car audi = new Car("Audi", "A3", 2006);
+        Car audi = new Disel("Audi", "A3", 2006);
         Phone samsung = new Phone("Samsung", "S7", 2019);
 
         me.setSalary(1000.0);
@@ -52,5 +56,9 @@ public class Main {
 
         dog.feed(5.0);
 
+        samsung.installAnnApp("app1");
+        samsung.installAnnApp("app2", "EN");
+        URL addr = new URL("https", "www.pirat.com", "/app3?FR");
+        samsung.installAnnApp(addr);
     }
 }
