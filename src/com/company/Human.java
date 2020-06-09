@@ -95,16 +95,19 @@ public class Human {
         if (spaceNumber < 0 || spaceNumber >= numberOfSpaces) return false;
         if (price == 0.0) {
             this.garage[spaceNumber] = car;
+            if (car != null) car.owners.add(this);
             return true;
         }
 
         if (price <= cash) {
             System.out.println(this.firstName + " " + this.lastName + " bought " + car.model + " for cash.");
+            car.owners.add(this);
             this.garage[spaceNumber] = car;
             this.cash -= price;
             bought = true;
         } else if (price <= salary * 12) {
             System.out.println(this.firstName + " " + this.lastName + " bought " + car.model + " on credit.");
+            car.owners.add(this);
             this.garage[spaceNumber] = car;
             bought = true;
         } else {

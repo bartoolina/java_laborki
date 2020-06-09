@@ -3,11 +3,16 @@ package com.company.devices;
 import com.company.Human;
 import com.company.salleable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Car extends Device implements salleable, Comparable<Car> {
-//    public Double value;
+    //    public Double value;
+    public List<Human> owners;
 
     public Car(String producer, String model, int yearOfProduction) {
         super(producer, model, yearOfProduction);
+        owners = new ArrayList<Human>();
     }
 
     public abstract void refuel();
@@ -32,7 +37,7 @@ public abstract class Car extends Device implements salleable, Comparable<Car> {
     @Override
     public void sell(Human seller, Human buyer, Double price) throws Exception {
         int sellerCarNumber = seller.getCarNumber(this);
-        if (sellerCarNumber >= 0) {
+        if (sellerCarNumber >= 0 && seller.equals(this.owners.get(this.owners.size() - 1))) {
             int buyerSpaceNumber = buyer.getFirstSpace();
             if (buyerSpaceNumber >= 0) {
                 if (buyer.setCar(this, price, buyerSpaceNumber)) {
@@ -53,5 +58,13 @@ public abstract class Car extends Device implements salleable, Comparable<Car> {
             System.out.println(seller + " can't sell not his car.");
             throw new Exception(seller + " can't sell not his car.");
         }
+    }
+
+    public boolean wasOwner(Human human) {
+        return owners.contains(human);
+    }
+
+    public int countTransaction() {
+        return owners.size();
     }
 }

@@ -23,16 +23,18 @@ public class Main {
         me.cash = 1000.0;
         audi.value = 1000.0;
         me.setCar(audi, 1000.0, 0);
-
+        System.out.println("Was " + me + " the owner of the car? " + audi.wasOwner(me));
         audi.turnOn();
         samsung.turnOn();
 
         Human janusz = new Human("Janusz", "Kowalski");
+        System.out.println("Was " + janusz + " the owner of the car? " + audi.wasOwner(janusz));
         janusz.cash = 2000.0;
         audi.sell(me, janusz, 1000.0);
         me.cash = 1000.0;
-        audi.sell(janusz, me, 1500.0);
-        audi.sell(me, janusz, 20000.0);
+        //audi.sell(janusz, me, 1500.0);
+        //audi.sell(me, janusz, 20000.0);
+        System.out.println("Was " + janusz + " the owner of the car? " + audi.wasOwner(janusz));
 
         Car skoda = new Electric("Skoda", "Rapid", 2020);
         skoda.sell(me, janusz, 100.0);
