@@ -1,9 +1,13 @@
 package com.company.devices;
 
+import com.company.Application;
 import com.company.Human;
 import com.company.salleable;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Phone extends Device implements salleable {
@@ -11,8 +15,70 @@ public class Phone extends Device implements salleable {
     public static final String DEFAULT_PROTOCOL = "https";
     public static final String DEFAULT_VERSION = "PL";
 
+    public List<Application> apps;
+
     public Phone(String producer, String model, int yearOfProduction) {
         super(producer, model, yearOfProduction);
+        apps = new ArrayList<Application>();
+    }
+
+    public boolean isAppInstall(Application app) {
+        return apps.contains(app);
+    }
+
+    public boolean isAppInstall(String name) {
+        for (Application app : apps) {
+            if (app.name.equals(name)) return true;
+        }
+        return false;
+    }
+
+    public List<Application> getAllFreeApp() {
+        List<Application> freeApps = new ArrayList<Application>();
+        for (Application app : apps) {
+            if (app.cost == 0.0) freeApps.add(app);
+        }
+        return freeApps;
+    }
+
+    public Double getValueAllApp() {
+        Double allValue = 0.0;
+        for (Application app : apps) {
+            allValue += app.cost;
+        }
+        return allValue;
+    }
+
+    public List<Application> getAppsSortedByName() {
+        List<Application> sortedList = new ArrayList<Application>(apps);
+
+        Collections.sort(sortedList, new Comparator<Application>() {
+            @Override
+            public int compare(Application app1, Application app2) {
+                return app1.name.compareTo(app2.name);
+            }
+        });
+        return sortedList;
+    }
+
+    public List<Application> getAppsSortedByValue() {
+        List<Application> sortedList = new ArrayList<Application>(apps);
+
+        Collections.sort(sortedList, new Comparator<Application>() {
+            @Override
+            public int compare(Application app1, Application app2) {
+                return app1.cost.compareTo(app2.cost);
+            }
+        });
+        return sortedList;
+    }
+
+    public void installNewApp(Application app, Human owner) {
+        if (owner.cash > app.cost && !isAppInstall(app)) {
+            owner.cash -= app.cost;
+            this.apps.add(app);
+            System.out.println(app.name + " has been installed.");
+        }
     }
 
     public void installAnnApp(String name) {
