@@ -2,16 +2,13 @@ package com.company;
 
 import com.company.creatures.FarmAnimal;
 import com.company.creatures.Pet;
-import com.company.devices.Car;
-import com.company.devices.Disel;
-import com.company.devices.Phone;
+import com.company.devices.*;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Main {
 
-    public static void main(String[] args) throws MalformedURLException {
+    public static void main(String[] args) throws Exception {
         Human me = new Human("Marcin", "Nowak");
 
         Pet dog = new Pet("dog");
@@ -25,17 +22,7 @@ public class Main {
 
         me.cash = 1000.0;
         audi.value = 1000.0;
-        me.setCar(audi, 1000.0);
-
-        audi.value = 10000.0;
-        me.setCar(audi, 10000.0);
-
-        audi.value = 100000.0;
-        me.setCar(audi, 100000.0);
-        System.out.println(me);
-        System.out.println(dog);
-        System.out.println(samsung);
-        System.out.println(audi);
+        me.setCar(audi, 1000.0, 0);
 
         audi.turnOn();
         samsung.turnOn();
@@ -46,6 +33,17 @@ public class Main {
         me.cash = 1000.0;
         audi.sell(janusz, me, 1500.0);
         audi.sell(me, janusz, 20000.0);
+
+        Car skoda = new Electric("Skoda", "Rapid", 2020);
+        skoda.sell(me, janusz, 100.0);
+        skoda.value = 20000.0;
+        me.setCar(skoda, 100.0, 1);
+        System.out.println(me + " has cars with a total value " + me.getValueOfCars());
+        Car ford = new LPG("Ford", "Taurus", 1969);
+        ford.value = 200.0;
+        me.setCar(ford, 0.0, 2);
+        System.out.println();
+
 
         samsung.sell(me, janusz, 100.0);
 
