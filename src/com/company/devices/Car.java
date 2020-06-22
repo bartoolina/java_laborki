@@ -1,9 +1,9 @@
 package com.company.devices;
 
 import com.company.Human;
-import com.company.salleable;
+import com.company.Sellable;
 
-public class Car extends Device implements salleable {
+public class Car extends Device implements Sellable {
     public Double value;
 
     public Car(String producer, String model, int yearOfProduction) {

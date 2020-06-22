@@ -1,9 +1,9 @@
 package com.company.devices;
 
 import com.company.Human;
-import com.company.salleable;
+import com.company.Sellable;
 
-public class Phone extends Device implements salleable {
+public class Phone extends Device implements Sellable {
 
     public Phone(String producer, String model, int yearOfProduction) {
         super(producer, model, yearOfProduction);

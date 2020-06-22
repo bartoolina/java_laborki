@@ -7,18 +7,19 @@ import javafx.util.Pair;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Human {
+public class Human extends Animal {
     String firstName;
     String lastName;
     public static final Double DEFAULT_SALARY = 0.0;
     private Double salary = DEFAULT_SALARY;
-    private ArrayList<Pair<LocalDate, Double>> salaryHistory = new ArrayList<>();
+    private final ArrayList<Pair<LocalDate, Double>> salaryHistory = new ArrayList<>();
     public Animal pet;
     private Car car;
     public Phone phone;
     public Double cash;
 
     public Human(String firstName, String lastName) {
+        super("human");
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -70,6 +71,11 @@ public class Human {
         }
 
         return bought;
+    }
+
+    @Override
+    public void sell(Human buyer, Human seller, Double price) {
+        System.out.println("Can't sell or buy a man.");
     }
 
     public String toString() {

@@ -44,5 +44,12 @@ public class Main {
         samsung.sell(me, janusz, 100.0);
 
 
+        me.pet = dog;
+        dog.sell(me, janusz, 10.0);
+        dog.sell(me, janusz, 10.0);
+        Human janek = new Human("Janek", "Nienasprzedaz");
+        janek.sell(me, janusz, 1.0);
+
+
     }
 }

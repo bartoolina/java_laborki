@@ -1,5 +1,5 @@
 package com.company;
 
-public interface salleable {
+public interface Sellable {
     void sell(Human seller, Human buyer, Double price);
 }
